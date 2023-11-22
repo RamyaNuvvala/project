@@ -1,13 +1,13 @@
 import streamlit as st
 
 def main():
-    st.title("College Information Website with Chatbot")
+    
     st.markdown("# Welcome to Our College Information Website!")
 
     # Add your content here
 
     # Dialogflow Messenger
-    st.markdown("## College Chatbot")
+    
     st.markdown("""
     <iframe
         allow="microphone;"
