@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #336699;
+<
         }
 
         /* Add more styles as needed */
     </style>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Information Website</title>
-</head>
-<body>
-    <h1>Welcome to Our College Information Website!</h1>
+    <meta name="viewport" content="width=de
 
     <!-- Add your content here -->
     <iframe
