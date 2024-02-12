@@ -6,8 +6,10 @@ def main():
 
     # Add your content here
 
+    # Additional link
+    st.markdown("[Check out our faculty page](https://www.example.com/faculty)")
+
     # Dialogflow Messenger
-    
     st.markdown("""
     <iframe
         allow="microphone;"
@@ -19,4 +21,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+    
