@@ -13,10 +13,6 @@ responses = {
 st.markdown(
     """
     <style>
-    .stApp {
-        max-width: 600px;
-        padding: 20px;
-    }
     .stTextInput > div > div > input {
         background-color: #f0f0f0;
         border: none;
@@ -56,9 +52,11 @@ def main():
     st.title("College Information Chatbot")
     st.markdown("Welcome to our college chatbot! Ask me anything about our college.")
 
-    user_input = st.text_input("You:", "")
+    # Use a text area for multiline input
+    user_input = st.text_area("You:", "", height=100)
 
-    if st.button("Send"):
+    # Use a button with a custom style
+    if st.button("Send", key="send_button", help="Click to send your message"):
         if user_input:
             bot_response = chatbot_response(user_input)
             st.text_area("Bot:", value=bot_response, height=100, max_chars=None, key=None)
@@ -67,4 +65,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-        
+            
