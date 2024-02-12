@@ -69,6 +69,9 @@ def main():
     st.title("College Information Chatbot")
     st.markdown("Welcome to our college chatbot! Ask me anything about our college.")
 
+    # Maintain chat history
+    chat_history = []
+
     # Use a text area for multiline input
     user_input = st.text_area("You:", "", height=100, key="user_input")
 
@@ -77,11 +80,16 @@ def main():
         if user_input:
             bot_response = chatbot_response(user_input)
             
-            # Display user message
-            st.markdown('<div class="chat-container"><div class="user-message">{}</div></div>'.format(user_input), unsafe_allow_html=True)
+            # Append user and bot messages to chat history
+            chat_history.append(("You", user_input))
+            chat_history.append(("Bot", bot_response))
             
-            # Display bot response
-            st.markdown('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(bot_response), unsafe_allow_html=True)
+            # Display chat history
+            for sender, message in chat_history:
+                if sender == "You":
+                    st.markdown('<div class="chat-container"><div class="user-message">{}</div></div>'.format(message), unsafe_allow_html=True)
+                else:
+                    st.markdown('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(message), unsafe_allow_html=True)
             
             # Clear the user input
             st.text_area("You:", "", height=100, key="user_input")
