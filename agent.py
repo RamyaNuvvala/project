@@ -70,7 +70,7 @@ def main():
     st.markdown("Welcome to our college chatbot! Ask me anything about our college.")
 
     # Use a text area for multiline input
-    user_input = st.text_area("You:", "", height=100)
+    user_input = st.text_area("You:", "", height=100, key="user_input")
 
     # Use a button with a custom style
     if st.button("Send", help="Click to send your message"):
@@ -84,7 +84,7 @@ def main():
             st.markdown('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(bot_response), unsafe_allow_html=True)
             
             # Clear the user input
-            st.text_area("You:", "", height=100)
+            st.text_area("You:", "", height=100, key="user_input")
 
             # Request focus on the input area for better UX
             st.experimental_set_query_params(having_input_focus="true")
@@ -93,4 +93,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
