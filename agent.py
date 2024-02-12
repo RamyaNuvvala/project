@@ -36,6 +36,27 @@ st.markdown(
         color: #333333;
         font-size: 16px;
     }
+    .chat-container {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .chat-message {
+        margin-bottom: 10px;
+    }
+    .user-message {
+        background-color: #dff0d8;
+        border-radius: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
+    .bot-message {
+        background-color: #d9edf7;
+        border-radius: 10px;
+        padding: 10px;
+        display: inline-block;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -56,13 +77,24 @@ def main():
     user_input = st.text_area("You:", "", height=100)
 
     # Use a button with a custom style
-    if st.button("Send", key="send_button", help="Click to send your message"):
+    if st.button("Send", key="send_button", help="Click to send your message", class="stButton"):
         if user_input:
             bot_response = chatbot_response(user_input)
-            st.text_area("Bot:", value=bot_response, height=100, max_chars=None, key=None)
+            
+            # Display user message
+            st.write('<div class="chat-container"><div class="user-message">{}</div></div>'.format(user_input), unsafe_allow_html=True)
+            
+            # Display bot response
+            st.write('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(bot_response), unsafe_allow_html=True)
+            
+            # Clear the user input
+            st.text_area("You:", "", height=100)
+
+            # Request focus on the input area for better UX
+            st.experimental_set_query_params(having_input_focus="true")
         else:
             st.warning("Please enter a message.")
 
 if __name__ == "__main__":
     main()
-            
+        
