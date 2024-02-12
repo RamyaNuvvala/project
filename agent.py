@@ -32,10 +32,6 @@ st.markdown(
         margin: 4px 2px;
         cursor: pointer;
     }
-    .stText {
-        color: #333333;
-        font-size: 16px;
-    }
     .chat-container {
         background-color: #f9f9f9;
         border-radius: 10px;
@@ -77,15 +73,15 @@ def main():
     user_input = st.text_area("You:", "", height=100)
 
     # Use a button with a custom style
-    if st.button("Send", key="send_button", help="Click to send your message", class="stButton"):
+    if st.button("Send", help="Click to send your message"):
         if user_input:
             bot_response = chatbot_response(user_input)
             
             # Display user message
-            st.write('<div class="chat-container"><div class="user-message">{}</div></div>'.format(user_input), unsafe_allow_html=True)
+            st.markdown('<div class="chat-container"><div class="user-message">{}</div></div>'.format(user_input), unsafe_allow_html=True)
             
             # Display bot response
-            st.write('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(bot_response), unsafe_allow_html=True)
+            st.markdown('<div class="chat-container"><div class="bot-message">{}</div></div>'.format(bot_response), unsafe_allow_html=True)
             
             # Clear the user input
             st.text_area("You:", "", height=100)
@@ -97,4 +93,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-        
+    
