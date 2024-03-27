@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        #chat-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #chat-box {
+            margin-bottom: 10px;
+            overflow-y: scroll;
+            height: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        #user-input {
+            width: calc(100% - 70px);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('send-btn').addEventListener('click', function() {
+                var userInput = document.getElementById('user-input').value;
+                document.getElementById('chat-box').innerHTML += '<p>You: ' + userInput + '</p>';
+                document.getElementById('user-input').value = '';
+                var botResponse = generateResponse(userInput);
+                document.getElementById('chat-box').innerHTML += '<p>Bot: ' + botResponse + '</p>';
+            });
+
+            // Function to generate bot response based on user input
+            function generateResponse(userInput) {
+                var patterns = {
+                    'hi|hello|hloo|hey': 'Hello! How can I assist you today?',
+                    'bye|exit': 'Goodbye! Have a great day!',
+                    'results?': 'Here are the exam results:<br>Register No. Wise Results: <a href="https://rvrjcce.ac.in/examcell/results/regnoresultsR.php" target="_blank">Register No. Wise Results</a><br>R20 Results: <a href="https://rvrjcce.ac.in/examcell/results/batch20/index.php" target="_blank">R20 Results</a>',
+        'admission|admission procedure': 'For admission procedures and requirements, check the <a href="https://rvrjcce.ac.in/admissionProcedure.php?menu=col" target="_blank">admission procedure page</a>',
+        'courses?|programs?': 'Explore the courses offered by the college on the <a href="https://rvrjcce.ac.in/coursesOffered.php?menu=col" target="_blank">courses offered page</a>',
+        'moodle': 'Access the Moodle platform for course materials and online learning: <a href="http://courses.rvrjc.ac.in/moodle/" target="_blank">Moodle platform</a>',
+        'hostel': 'Information about hostels:<br>Men\'s Hostel: <a href="https://rvrjcce.ac.in/menshostel.php?menu=faclt" target="_blank">Men\'s Hostel</a><br>Women\'s Hostel: <a href="https://rvrjcce.ac.in/womenshostel.php?menu=faclt" target="_blank">Women\'s Hostel</a><br>Girls Hostel: <a href="https://rvrjcce.ac.in/girlshostel.php?menu=faclt" target="_blank">Girls Hostel</a>',
+        'canteen': 'Check out the variety of food available at the college canteen: <a href="https://rvrjcce.ac.in/canteen" target="_blank">Canteen page</a>',
+        'seminar halls?': 'Details about seminar halls and facilities can be found on the <a href="https://rvrjcce.ac.in/seminarhalls" target="_blank">seminar halls page</a>',
+        'academic regulations': 'For academic rules and regulations, refer to the <a href="https://rvrjcce.ac.in/academicregulations" target="_blank">academic regulations page</a>',
+        'placement|jobs?': 'View the placement statistics and job opportunities on the <a href="https://rvrjcce.ac.in/placement_statistics" target="_blank">placement statistics page</a>',
+        'calendar|academic calendar': 'To keep track of academic events and schedules, check the <a href="https://rvrjcce.ac.in/academic.php" target="_blank">academic calendar</a>',
+        'civil|ce': 'For civil department information:<br>Students: <a href="http://ce.rvrjcce.ac.in/students.php" target="_blank">Students</a><br>Timetable: <a href="http://ce.rvrjcce.ac.in/timetable.php" target="_blank">Timetable</a><br>Syllabus: <a href="http://ce.rvrjcce.ac.in/syllabus/" target="_blank">Syllabus</a><br>Faculty: <a href="http://ce.rvrjcce.ac.in/faculty.php" target="_blank">Faculty</a><br>Placements: <a href="http://ce.rvrjcce.ac.in/placements.html" target="_blank">Placements</a><br>For any other information, please visit the <a href="http://ce.rvrjcce.ac.in/" target="_blank">department website</a>',
+        'chemical|che': 'For chemical department information:<br>Students: <a href="http://che.rvrjcce.ac.in/students.html" target="_blank">Students</a><br>Faculty: <a href="http://che.rvrjcce.ac.in/faculty.html" target="_blank">Faculty</a><br>Syllabus: <a href="http://che.rvrjcce.ac.in/syllabus.html" target="_blank">Syllabus</a><br>Timetables: <a href="http://che.rvrjcce.ac.in/Timetables.html" target="_blank">Timetables</a><br>Placements: <a href="http://che.rvrjcce.ac.in/placements.html" target="_blank">Placements</a>',
+        'computer science|cse': 'For computer science department information:<br>Students: <a href="http://cse.rvrjcce.ac.in/students.php" target="_blank">Students</a><br>Timetable: <a href="http://cse.rvrjcce.ac.in/timetable.php" target="_blank">Timetable</a><br>Syllabus: <a href="http://cse.rvrjcce.ac.in/syllabus/" target="_blank">Syllabus</a><br>Faculty: <a href="http://cse.rvrjcce.ac.in/faculty.php" target="_blank">Faculty</a><br>Placements: <a href="http://cse.rvrjcce.ac.in/placements.html" target="_blank">Placements</a>',
+'electronics|ece': 'For electronics and communication department information:<br>Students: <a href="http://ece.rvrjcce.ac.in/students.php" target="_blank">Students</a><br>Timetable: <a href="http://ece.rvrjcce.ac.in/timetable.php" target="_blank">Timetable</a><br>Syllabus: <a href="http://ece.rvrjcce.ac.in/syllabus/" target="_blank">Syllabus</a><br>Faculty: <a href="http://ece.rvrjcce.ac.in/faculty.php" target="_blank">Faculty</a><br>Placements: <a href="http://ece.rvrjcce.ac.in/placements.html" target="_blank">Placements</a>',
+'electrical|eee': 'For electrical and electronics department information:<br>Students: <a href="http://eee.rvrjcce.ac.in/students.php" target="_blank">Students</a><br>Timetable: <a href="http://eee.rvrjcce.ac.in/timetable.php" target="_blank">Timetable</a><br>Syllabus: <a href="http://eee.rvrjcce.ac.in/syllabus.html" target="_blank">Syllabus</a>',
+ 'bus fee|busfare|bus fare': 'For bus fee information, please contact the college transportation department.',
+                    
+                
+ };
+var botResponse = '';
+                for (var pattern in patterns) {
+                    var regex = new RegExp('\\b(' + pattern + ')\\b', 'i');
+                    if (regex.test(userInput)) {
+                        botResponse = patterns[pattern];
+                        break;
+                    }
+                }
+
+                if (!botResponse) {
+        var options = '';
+        for (var pattern in patterns) {
+            // Extracting the main form of each pattern
+            var mainForm = pattern.split('|')[0];
+            options += '<button onclick="selectPattern(\'' + mainForm + '\')">' + mainForm + '</button>';
+        }
+        botResponse = 'Sorry, I couldn\'t understand that. Here are some options:<br>' + options;
+    }
+
+    return botResponse;
+}
+            window.selectPattern = function(pattern) {
+    var botResponse = generateResponse(pattern);
+    document.getElementById('chat-box').innerHTML = '<p>You: ' + pattern + '</p>' +
+                                                      '<p>Bot: ' + botResponse + '</p>';
+}
+
+        });
+    </script>
+</body>
+</html>
+
