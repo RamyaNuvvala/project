@@ -96,6 +96,22 @@
 
             // Function to generate bot response based on user input
             function generateResponse(userInput) {
+                var greetings = ['hi', 'hello', 'hey', 'hola'];
+
+    // Convert user input to lowercase for case-insensitive matching
+                var lowercaseInput = userInput.toLowerCase();
+
+    // Check if the input matches any greeting pattern
+                if (greetings.includes(lowercaseInput)) {
+        // Return a random welcoming message
+                   var welcomingMessages = [
+                    'Hello! How can I assist you today?',
+                    'Hi there! What can I help you with?',
+                    'Hey! How may I help you?',
+                    'Hola! How can I assist you?'
+                   ];
+                   return welcomingMessages[Math.floor(Math.random() * welcomingMessages.length)];
+    }
                 var patterns = {
                     'academic regulations|r20 regulations|regulations': 'For academic rules and regulations, refer to the <a href="https://rvrjcce.ac.in/acadregulations.php">academic regulations page</a>',
                     'admission|admission procedure': 'For admission procedures and requirements, check the <a href="https://rvrjcce.ac.in/admissionProcedure.php?menu=col">admission procedure page</a>',
