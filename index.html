@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         #chat-container {
             max-width: 400px;
-            margin: 0 auto;
+            width: 100%;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
+            border-radius: 10px;
+            background-color: #dff0ffs; /* Change the background color here */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
         }
         #chat-box {
-            margin-bottom: 10px;
-            overflow-y: auto; /* Enable scrollbar when content exceeds height */
-            height: 200px;
-            border: 1px solid #ccc;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ced4da;
             padding: 10px;
-            background-color: #f9f9f9;
-            margin-right: -20px; /* Compensate for scrollbar width */
-            padding-right: 20px; /* Compensate for scrollbar width */
+            background-color: #f1f3f5;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+        }
+        #chat-box::-webkit-scrollbar {
+            width: 8px;
+        }
+        #chat-box::-webkit-scrollbar-thumb {
+            background-color: #ced4da;
+            border-radius: 5px;
         }
         #user-input {
             width: calc(100% - 70px);
             margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
         }
         #send-btn {
-            vertical-align: top;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
         }
+        #send-btn:hover {
+            background-color: #0056b3;
+        }s
     </style>
 </head>
 <body>
