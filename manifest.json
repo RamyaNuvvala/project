@@ -1,0 +1,12 @@
+{
+	"name": "My Project",
+	"version": "1.0",
+	"offline_access": true,
+	"icons": [
+		{
+			"src": "icon.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	]
+}
