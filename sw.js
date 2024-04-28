@@ -1,8 +1,7 @@
 const cacheName = 'my-cache';
 const filesToCache = [
 	'/index.html',
-	'/css/style.css',
-	'/js/script.js',
+	
 	// Add more files as needed
 ];
 
